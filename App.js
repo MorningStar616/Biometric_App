@@ -8,6 +8,10 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import SignInScreen from './src/screens/SignInScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+import EmailConfirmScreen from './src/screens/EmailConfirmScreen/EmailConfirmScreen';
+import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import NewPasswordScreen from './src/screens/NewPasswordScreen';
 
 const styles = StyleSheet.create({
   root: {
@@ -19,7 +23,7 @@ const styles = StyleSheet.create({
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <SignInScreen />
+      <NewPasswordScreen />
     </SafeAreaView>
   );
 };

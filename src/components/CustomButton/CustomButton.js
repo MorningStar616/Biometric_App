@@ -24,11 +24,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#40AE2D',
   },
 
+  container_SECONDARY: {
+    width: '50%',
+    borderRadius: 20,
+    borderColor: '#40AE2D',
+    borderWidth: 2,
+  },
+
   container_TERTIARY: {},
 
   text: {
     fontWeight: 'bold',
     color: 'white',
+  },
+
+  text_SECONDARY:{
+    color: '#40AE2D',
   },
 
   text_TERTIARY: {

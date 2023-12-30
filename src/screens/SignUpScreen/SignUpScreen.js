@@ -1,23 +1,28 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image, useWindowDimensions, ScrollView} from 'react-native';
-import Logo from '../../../assets/images/logo-color-bg.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const SignInScreen = () => {
+const SignUpScreen = () => {
   const [username, setUsername] = useState('');
+  const [position, setPosition] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const onRegisterPressed = () => {
+    console.warn("Registered");
+  }
+
   const onSignInPressed = () => {
-    console.warn("Login");
-  }
-
-  const onForgotPasswordPressed = () => {
-    console.warn("onForgotPasswordPressed");
-  }
-
-  const onSignUpPressed = () => {
     console.warn("onSignUpPressed");
+  }
+
+  const onTermsOfUsePressed = () => {
+    console.warn("onTermsOfUsePressed");
+  }
+
+  const onPrivacyPressed = () => {
+    console.warn("onPrivacyPressed");
   }
 
 
@@ -26,21 +31,27 @@ const SignInScreen = () => {
   return (
     <ScrollView>
       <View style={styles.root}>
-        <Image 
-          source={Logo} 
-          style={[styles.logo, {height: height * 0.3}]}resizeMode="contain" 
-        />
 
         <Text 
-          style={styles.textBelowLogo}>Welcome Onboard!
+          style={styles.title}>Sign Up
         </Text>
         <Text 
-          style={styles.additionalText}>Sign In to your account</Text>
+          style={styles.additionalText}>Create your account and access your tools</Text>
 
         <CustomInput 
           placeholder="Username" 
           value={username} 
           setValue={setUsername} 
+        />
+        <CustomInput 
+          placeholder="Position" 
+          value={position} 
+          setValue={setPosition} 
+        />
+        <CustomInput 
+          placeholder="Email" 
+          value={email} 
+          setValue={setEmail} 
         />
         <CustomInput 
           placeholder="Password" 
@@ -49,22 +60,23 @@ const SignInScreen = () => {
           secureTextEntry 
         />
 
-        <CustomButton 
-          text="Login" 
-          onPress={onSignInPressed}
-        />
+        <Text 
+          style={styles.text}>By registering, you confirm that you accept our 
+          <Text style={styles.link} onPress={onTermsOfUsePressed}>Terms of Use</Text> and 
+          <Text style={styles.link} onPress={onPrivacyPressed}> Privacy Policy</Text>
+        </Text>
 
         <CustomButton 
-          text="Forgot password?" 
-          onPress={onForgotPasswordPressed}
-          type= 'TERTIARY'
+          text="Register" 
+          onPress={onRegisterPressed}
         />
 
         <View style={styles.horizontalLine} />
 
+
         <CustomButton 
-          text="Don't have an account? Sign Up" 
-          onPress={onSignUpPressed}
+          text="Already have an account? Sign In" 
+          onPress={onSignInPressed}
           type= 'TERTIARY'
         />
       </View>
@@ -77,22 +89,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 30,
   },
-  logo: {
-    width: '70%',
-    maxWidth: 300,
-    maxHeight: 200,
-  },
-  textBelowLogo: {
-    marginTop: 10,
+  title: {
+    marginTop: 80,
     marginBottom: 20,
     fontWeight: 'bold',
     fontSize: 26,
-    color: '#333', // Change the color as needed
+    color: '#333',
   },
   additionalText: {
     fontSize: 16,
     color: '#555',
     marginBottom: 20,
+  },
+  text: {
+    textAlign: 'center',
+    color: 'grey',
+    marginVertical: 20,
+  },
+  link: {
+    color: '#40AE2D'
   },
   horizontalLine: {
     borderBottomWidth: 1,
@@ -102,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default SignUpScreen;
