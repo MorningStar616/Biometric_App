@@ -1,23 +1,29 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-/*import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import SignInScreen from './src/screens/SignInScreen';
-import SignUpScreen from './src/screens/SignUpScreen';
-import EmailConfirmScreen from './src/screens/EmailConfirmScreen';
-import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
-import NewPasswordScreen from './src/screens/NewPasswordScreen';
+import SignInScreen from '../screens/SignInScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+import EmailConfirmScreen from '../screens/EmailConfirmScreen';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
+import NewPasswordScreen from '../screens/NewPasswordScreen';
 
 
-const Stack = createNativeStackNavigator();*/
+const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Text> Navigation</Text>
+      <Stack.Navigator screenOptions={{headerShown : false}}>
+        <Stack.Screen name='SignIn' component={SignInScreen} />
+        <Stack.Screen name='SignUp' component={SignUpScreen} />
+        <Stack.Screen name='Confirm Email' component={EmailConfirmScreen} />
+        <Stack.Screen name='Forgot Password' component={ForgotPasswordScreen} />
+        <Stack.Screen name='Reset Password' component={NewPasswordScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-export default Navigation
+export default Navigation;
