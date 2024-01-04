@@ -3,21 +3,27 @@ import { View, Text, StyleSheet, Image, useWindowDimensions, ScrollView} from 'r
 import Logo from '../../../assets/images/logo-color-bg.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigation = useNavigation();
+
   const onSignInPressed = () => {
-    console.warn("Login");
+    //Login Button
+    navigation.navigate ('Profile');
   }
 
   const onForgotPasswordPressed = () => {
-    console.warn("onForgotPasswordPressed");
+    //Forgot Password
+    navigation.navigate ('Forgot Password');
   }
 
   const onSignUpPressed = () => {
-    console.warn("onSignUpPressed");
+    //Dont have an account. SignUp
+    navigation.navigate ("SignUp");
   }
 
 

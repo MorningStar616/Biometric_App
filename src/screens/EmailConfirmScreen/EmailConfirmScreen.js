@@ -2,13 +2,16 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image, useWindowDimensions, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const EmailConfirmScreen = () => {
   const [code, setCode] = useState('');
+
+  const navigation = useNavigation();
   
 
   const onConfirmPressed = () => {
-    console.warn("onConfirmPressed");
+    navigation.navigate('Profile');
   }
 
   const onResendPressed = () => {
@@ -16,7 +19,7 @@ const EmailConfirmScreen = () => {
   }
 
   const onSignInPressed = () => {
-    console.warn("onSignUpPressed");
+    navigation.navigate('SignIn');
   }
 
   const {height} = useWindowDimensions();
