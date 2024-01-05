@@ -4,7 +4,7 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
-const ForgotPasswordScreen = () => {
+const ForgotUsernameScreen = () => {
   const [email, setEmail] = useState('');
 
   const navigation = useNavigation();
@@ -26,7 +26,7 @@ const ForgotPasswordScreen = () => {
       <View style={styles.root}>
 
         <Text 
-          style={styles.title}>Reset Password
+          style={styles.title}>Forgot Username
         </Text>
         <Text 
           style={styles.additionalText}>Input the Email linked with your account</Text>
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ForgotPasswordScreen;
+export default ForgotUsernameScreen;

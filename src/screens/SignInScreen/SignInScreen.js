@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
 
@@ -16,9 +15,9 @@ const SignInScreen = () => {
     navigation.navigate ('Profile');
   }
 
-  const onForgotPasswordPressed = () => {
+  const onForgotUsernamePressed = () => {
     //Forgot Password
-    navigation.navigate ('Forgot Password');
+    navigation.navigate ('Forgot Username');
   }
 
   const onSignUpPressed = () => {
@@ -48,21 +47,15 @@ const SignInScreen = () => {
           value={username} 
           setValue={setUsername} 
         />
-        <CustomInput 
-          placeholder="Password" 
-          value={password} 
-          setValue={setPassword}  
-          secureTextEntry 
-        />
-
+        
         <CustomButton 
-          text="Login" 
+          text="Authenticate" 
           onPress={onSignInPressed}
         />
 
         <CustomButton 
-          text="Forgot password?" 
-          onPress={onForgotPasswordPressed}
+          text="Forgot username?" 
+          onPress={onForgotUsernamePressed}
           type= 'TERTIARY'
         />
 

@@ -8,7 +8,6 @@ const SignUpScreen = () => {
   const [username, setUsername] = useState('');
   const [position, setPosition] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
 
@@ -56,13 +55,7 @@ const SignUpScreen = () => {
           value={email} 
           setValue={setEmail} 
         />
-        <CustomInput 
-          placeholder="Password" 
-          value={password} 
-          setValue={setPassword}  
-          secureTextEntry 
-        />
-
+        
         <Text 
           style={styles.text}>By registering, you confirm that you accept our 
           <Text style={styles.link} onPress={onTermsOfUsePressed}>Terms of Use</Text> and 
@@ -90,7 +83,7 @@ const SignUpScreen = () => {
 const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
-    padding: 30,
+    padding: 55,
   },
   title: {
     marginTop: 80,

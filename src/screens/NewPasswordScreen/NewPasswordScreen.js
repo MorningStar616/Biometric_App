@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 const NewPasswordScreen = () => {
   const [code, setCode] = useState('');
 
-  const [newPassword, setNewPassword] = useState('');
 
   const navigation = useNavigation();
   
@@ -27,21 +26,15 @@ const NewPasswordScreen = () => {
       <View style={styles.root}>
 
         <Text 
-          style={styles.title}>Reset Password
+          style={styles.title}>Access your account
         </Text>
         <Text 
-          style={styles.additionalText}>Input the Email linked with your account</Text>
+          style={styles.additionalText}>Please input the code provided in your email</Text>
 
         <CustomInput 
           placeholder="Code" 
           value={code} 
           setValue={setCode} 
-        />
-
-        <CustomInput 
-          placeholder="New Password" 
-          value={newPassword} 
-          setValue={setNewPassword} 
         />
         
         <CustomButton 
