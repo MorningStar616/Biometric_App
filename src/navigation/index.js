@@ -22,7 +22,7 @@ const Navigation = () => {
         <Stack.Screen name='Confirm Email' component={EmailConfirmScreen} />
         <Stack.Screen name='Forgot Username' component={ForgotUsernameScreen} />
         <Stack.Screen name='Reset Password' component={NewPasswordScreen} />
-        <Stack.Screen name= 'Profile' component={ProfileScreen} />
+        <Stack.Screen name='Profile' component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
