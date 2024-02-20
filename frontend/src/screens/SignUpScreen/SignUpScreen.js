@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, StyleSheet, Image, useWindowDimensions, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
 const SignUpScreen = () => {
@@ -12,9 +13,15 @@ const SignUpScreen = () => {
   const navigation = useNavigation();
 
   const onRegisterPressed = () => {
-    navigation.navigate('Confirm Email');
+    axios.post('http://localhost:5000/register', { username, position, email })
+      .then(response => {
+        navigation.navigate('Confirm Email');
+      })
+      .catch(error => {
+        console.error('Error registering:', error);
+        // Handle error, e.g., show an error message to the user
+      });
   }
-
   const onSignInPressed = () => {
     navigation.navigate('SignIn');
   }
