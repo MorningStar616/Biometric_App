@@ -7,7 +7,7 @@ const ProfileScreen = () => {
   const navigation = useNavigation();
   const [userData, setUserData] = useState({
     username: 'JohnDoe',
-    profilePhoto: require('../assets/images/logo-color.jpg'),
+    profilePhoto: require('../../../assets/images/logo-color-bg.png'),
     email: 'johndoe@example.com',
     position: 'Software Engineer',
     dob: '01/01/1990',
