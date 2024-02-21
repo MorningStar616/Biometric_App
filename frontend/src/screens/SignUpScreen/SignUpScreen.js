@@ -13,13 +13,19 @@ const SignUpScreen = () => {
   const navigation = useNavigation();
 
   const onRegisterPressed = () => {
-    axios.post('http://localhost:5000/register', { username, position, email })
+    axios.post('http://192.168.1.7:5000/register', { username, position, email })
       .then(response => {
         navigation.navigate('Confirm Email');
       })
       .catch(error => {
         console.error('Error registering:', error);
-        // Handle error, e.g., show an error message to the user
+        if (error.response && error.response.data && error.response.data.error === 'Username already exists') {
+          // Alert user that username already exists
+          Alert.alert('Error', 'Username already exists. Please choose a different username.');
+        } else {
+          // Handle other errors, e.g., show a generic error message to the user
+          Alert.alert('Error', 'An error occurred while registering. Please try again later.');
+        }
       });
   }
   const onSignInPressed = () => {
