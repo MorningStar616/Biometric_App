@@ -43,6 +43,27 @@ def register():
         return jsonify({'message': 'User created successfully'}), 200
     else:
         return jsonify({'error': 'Username already exists'}), 400
+    
+@app.route('/auth', methods=['POST'])
+
+def authenticate():
+    try:
+        data = request.json
+        if data is None:
+            return jsonify({'error': 'No JSON data provided'}), 400
+
+        username = data.get('username')
+        if not username:
+            return jsonify({'error': 'Username not provided'}), 400
+
+        # Check if user exists
+        existing_user = users_ref.where('username', '==', username).get()
+        if existing_user:
+            return jsonify({'message': 'User authenticated successfully'}), 200
+        else:
+            return jsonify({'error': 'User not found'}), 404
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     print('Flask server running...')
