@@ -1,71 +1,54 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, Image, useWindowDimensions, ScrollView} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, useWindowDimensions, ScrollView } from 'react-native';
 import Logo from '../../../assets/images/logo-color-bg.png';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
 const SignInScreen = () => {
   const [username, setUsername] = useState('');
-
   const navigation = useNavigation();
 
   const onSignInPressed = () => {
-    //Login Button
-    navigation.navigate ('Profile');
+    axios.post('http://192.168.1.7:5000/auth', { username })
+      .then(response => {
+        console.log('Authentication response:', response.data);
+        navigation.navigate('Profile');
+      })
+      .catch(error => {
+        console.error('Error authenticating:', error);
+        if (error.response) {
+          console.error('Response data:', error.response.data);
+        }
+        // Handle error, e.g., show an error message to the user
+      });
   }
 
   const onForgotUsernamePressed = () => {
-    //Forgot Password
-    navigation.navigate ('Forgot Username');
+    navigation.navigate('Forgot Username');
   }
 
   const onSignUpPressed = () => {
-    //Dont have an account. SignUp
-    navigation.navigate ("SignUp");
+    navigation.navigate('SignUp');
   }
 
-
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
 
   return (
     <ScrollView>
       <View style={styles.root}>
-        <Image 
-          source={Logo} 
-          style={[styles.logo, {height: height * 0.3}]}resizeMode="contain" 
-        />
+        <Image source={Logo} style={[styles.logo, { height: height * 0.3 }]} resizeMode="contain" />
 
-        <Text 
-          style={styles.textBelowLogo}>Welcome Onboard!
-        </Text>
-        <Text 
-          style={styles.additionalText}>Sign In to your account</Text>
+        <Text style={styles.textBelowLogo}>Welcome Onboard!</Text>
+        <Text style={styles.additionalText}>Sign In to your account</Text>
 
-        <CustomInput 
-          placeholder="Username" 
-          value={username} 
-          setValue={setUsername} 
-        />
-        
-        <CustomButton 
-          text="Authenticate" 
-          onPress={onSignInPressed}
-        />
+        <CustomInput placeholder="Username" value={username} setValue={setUsername} />
 
-        <CustomButton 
-          text="Forgot username?" 
-          onPress={onForgotUsernamePressed}
-          type= 'TERTIARY'
-        />
-
+        <CustomButton text="Authenticate" onPress={onSignInPressed} />
+        <CustomButton text="Forgot username?" onPress={onForgotUsernamePressed} type='TERTIARY' />
         <View style={styles.horizontalLine} />
-
-        <CustomButton 
-          text="Don't have an account? Sign Up" 
-          onPress={onSignUpPressed}
-          type= 'TERTIARY'
-        />
+        <CustomButton text="Don't have an account? Sign Up" onPress={onSignUpPressed} type='TERTIARY' />
       </View>
     </ScrollView>
   );
